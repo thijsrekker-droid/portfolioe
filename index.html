@@ -13,6 +13,7 @@
   <div id="cur"></div>
   <div id="cur-f"></div>
   <div class="preview-img" id="preview"><img id="preview-img" src="" alt=""></div>
+
   <nav>
     <a href="#" class="n-logo" onclick="showHome();return false;">Thijs Rekker</a>
     <div class="n-c">
@@ -39,12 +40,16 @@
         <div class="hs"><div class="hs-n">NL</div><div class="hs-l">Locatie</div></div>
       </div>
     </section>
+
     <div id="wa" class="anchor"></div>
     <div class="section-mini-label">Recente projecten</div>
     <div id="project-list"></div>
 
     <div class="about-teaser reveal" onclick="showPage('about')">
-      <div><div class="sec-tag teaser-tag">Over mij</div><p class="about-teaser-text">Graphic designer uit Barneveld die gelooft dat goed design een verhaal vertelt dat mensen bijblijft.</p></div>
+      <div>
+        <div class="sec-tag teaser-tag">Over mij</div>
+        <p class="about-teaser-text">Graphic designer uit Barneveld die gelooft dat goed design een verhaal vertelt dat mensen bijblijft.</p>
+      </div>
       <div class="about-teaser-link">Lees meer
         <svg width="20" height="10" viewBox="0 0 20 10" fill="none"><path d="M0 5H19M19 5L14 1M19 5L14 9" stroke="currentColor" stroke-width="1.2"/></svg>
       </div>
@@ -75,7 +80,6 @@
         <div class="ab-body">
           <p>Ik ontwerp identiteiten, campagnemateriaal en visuele systemen die niet alleen mooi zijn, maar ook helder communiceren.</p>
           <p>Mijn stijl is strak, editorial en rustig. Ik werk graag met sterke typografie, contrast en een duidelijke structuur.</p>
-          <p>Deze versie focust vooral op die index-achtige projectlijst die je wilde.</p>
         </div>
       </div>
       <div class="ab-r reveal">
@@ -89,13 +93,12 @@
         </div>
       </div>
     </section>
-    <footer><div class="f-l">© 2024 Thijs Rekker — Graphic Designer</div><div class="f-r"><a href="#" onclick="showHome();return false;">Home</a></div></footer>
   </div>
 
   <div class="page" id="page-project">
     <div class="pw">
       <div class="ph">
-        <div class="ph-top"><button class="back" onclick="showHome()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M0 5H15M0 5L5 1M0 5L5 9" stroke="currentColor" stroke-width="1.2"/></svg>Alle projecten</button></div>
+        <div class="ph-top"><button class="back" onclick="showHome()">Alle projecten</button></div>
         <div class="ph-name-wrap"><div class="ph-name" id="proj-h"></div></div>
         <div class="ph-meta-strip">
           <div class="pm-cell"><div class="pm-k">Project</div><div class="pm-v" id="ps-title"></div></div>
@@ -108,12 +111,7 @@
         <div class="pb-s"><div class="pb-lbl">Gebruikt</div><div class="si"><div class="si-k">Software</div><div class="si-v" id="ps-tools"></div></div></div>
         <div class="pb-t"><p id="proj-desc"></p></div>
       </div>
-      <div class="pg" id="proj-gal"><div class="pg-lbl">Projectbeelden</div><div class="gg" id="gal-grid"></div></div>
-      <div class="pnav">
-        <button class="pnb" id="pnb-prev"><div class="pnb-l">← Vorig project</div><div class="pnb-n" id="pnb-prev-n"></div></button>
-        <button class="btn btn-ghost" onclick="showHome()">Alle projecten</button>
-        <button class="pnb r" id="pnb-next"><div class="pnb-l">Volgend project →</div><div class="pnb-n" id="pnb-next-n"></div></button>
-      </div>
+      <div class="pg"><div class="pg-lbl">Projectbeelden</div><div class="gg" id="gal-grid"></div></div>
     </div>
   </div>
 

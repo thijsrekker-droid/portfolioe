@@ -1,3 +1,3 @@
-# Thijs Portfolio V4
+# Thijs Portfolio V5
 
-Nu met alle 14 projecten uit je screenshot overgenomen.
+Fix voor alle 14 projectrijen.
