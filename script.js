@@ -199,19 +199,16 @@ projects.forEach((p, i) => {
 })
 
 function showHome() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   document.getElementById("page-home").classList.add("active")
-  document.getElementById("page-project").classList.remove("active")
-  document.getElementById("page-about").classList.remove("active")
-  history.pushState({ page: "home" }, "", "")
+  history.pushState({ page: "home" }, "", location.pathname)
   window.scrollTo(0, 0)
 }
 
 function showPage(name) {
-  document.getElementById("page-home").classList.remove("active")
-  document.getElementById("page-project").classList.remove("active")
-  document.getElementById("page-about").classList.remove("active")
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   document.getElementById("page-" + name).classList.add("active")
-  history.pushState({ page: name }, "", "")
+  history.pushState({ page: name }, "", location.pathname)
   window.scrollTo(0, 0)
 }
 
@@ -229,25 +226,37 @@ function openProject(i) {
   const grid = document.getElementById("gal-grid")
   grid.innerHTML = ""
 
-  p.gallery.forEach((img, i) => {
+  p.gallery.forEach((img, idx) => {
     const item = document.createElement("div")
-    item.className = i === 0 ? "gi wide" : "gi"
+    item.className = idx === 0 ? "gi wide" : "gi"
     item.innerHTML = `<img loading="lazy" src="${img}">`
     grid.appendChild(item)
   })
 
-  document.getElementById("page-home").classList.remove("active")
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
   document.getElementById("page-project").classList.add("active")
-  history.pushState({ page: "project", index: i }, "", "")
+  history.pushState({ page: "project", index: i }, "", location.pathname)
   window.scrollTo(0, 0)
 }
 
 window.addEventListener("popstate", e => {
-  if (!e.state) { showHome(); return }
-  if (e.state.page === "home") showHome()
-  else if (e.state.page === "about") showPage("about")
-  else if (e.state.page === "project") openProject(e.state.index)
+  if (!e.state || e.state.page === "home") {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+    document.getElementById("page-home").classList.add("active")
+    window.scrollTo(0, 0)
+    return
+  }
+  if (e.state.page === "about") {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+    document.getElementById("page-about").classList.add("active")
+    window.scrollTo(0, 0)
+  } else if (e.state.page === "project") {
+    openProject(e.state.index)
+  }
 })
+
+// Zet beginstate
+history.replaceState({ page: "home" }, "", location.pathname)
 
 // Cursor animatie
 const cur = document.getElementById('cur')
@@ -260,14 +269,14 @@ document.addEventListener('mousemove', e => {
   mx = e.clientX
   my = e.clientY
   cur.style.left = mx + 'px'
-  cur.style.top  = my + 'px'
+  cur.style.top = my + 'px'
 })
 
 function animateCursor() {
   fx += (mx - fx) * 0.18
   fy += (my - fy) * 0.18
   curF.style.left = fx + 'px'
-  curF.style.top  = fy + 'px'
+  curF.style.top = fy + 'px'
   requestAnimationFrame(animateCursor)
 }
 animateCursor()
