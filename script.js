@@ -70,4 +70,249 @@ desc:`Loszand Festival vroeg mij social media visuals te ontwerpen.
 De stijl combineert de kleuren van zand en water om het zomerse festivalgevoel te versterken.`
 },
 {
-title
+title:"Liquid Liquor",
+cat:"Branding / label design",
+services:"Packaging design",
+tools:"Illustrator",
+cover:"images/Liqued Licour_1.png",
+preview:"images/Liqued Licour_3.png",
+gallery:[
+"images/Liqued Licour_1.png",
+"images/Liqued Licour_2.png",
+"images/Liqued Licour_3.png",
+"images/Liqued Licour_4.png"
+],
+desc:`Voor Liquid Liquor ontwikkelde ik een etiket voor een druivenlikeur. 
+Het ontwerp combineert houtstructuren, paarse tinten en handgetekende druiven.`
+},
+{
+title:"Insanity",
+cat:"Festival social media",
+services:"Concept design",
+tools:"Photoshop",
+cover:"images/Insanity_1.png",
+preview:"images/Insanity_4.png",
+gallery:[
+"images/Insanity_1.png",
+"images/Insanity_2.jpg",
+"images/Insanity_3.png",
+"images/Insanity_4.png",
+"images/Insanity_5.png"
+],
+desc:`Voor festival Insanity ontwikkelde ik een visueel concept waarbij het logo werd omgezet 
+naar een 3D visual gecombineerd met ruimte- en woestijnbeelden.`
+},
+{
+title:"Ines Administratie",
+cat:"Logo design",
+services:"Brand identity",
+tools:"Illustrator",
+cover:"images/Inesadministratie_1.png",
+preview:"images/Inesadministratie_1.png",
+gallery:[
+"images/Inesadministratie_1.png"
+],
+desc:`Voor Ines Administratie ontwierp ik een bedrijfslogo waarbij de letter I 
+een centrale rol speelt in het ontwerp.`
+},
+{
+title:"EVNTP",
+cat:"Editorial design",
+services:"Magazine design",
+tools:"InDesign",
+cover:"images/evntp_01.png",
+preview:"images/evntp_21.png",
+gallery:[
+"images/evntp_01.png",
+"images/evntp_20.png",
+"images/evntp_21.png",
+"images/evntp_22.png",
+"images/evntp_23.png",
+"images/evntp_24.png",
+"images/evntp_25.png",
+"images/evntp_30.png",
+"images/evntp_31.png"
+],
+desc:`Afstudeerproject waarbij ik onderzoek deed naar duurzamere festivalmunten 
+en dit presenteerde in de vorm van een magazine.`
+},
+{
+title:"Fight The Evil (Savellix)",
+cat:"Music artwork",
+services:"Album cover",
+tools:"Photoshop",
+cover:"images/fighttheevil_01.png",
+preview:"images/fighttheevil_02.png",
+gallery:[
+"images/fighttheevil_01.png",
+"images/fighttheevil_02.png",
+"images/fighttheevil_03.png",
+"images/fighttheevil_27.png",
+"images/fighttheevil_28.png"
+],
+desc:`Album artwork ontworpen voor DJ Savellix voor de track "Fight The Evil".`
+},
+{
+title:"Rise And Unite",
+cat:"Music artwork",
+services:"Album cover",
+tools:"Photoshop",
+cover:"images/Riseandunite_01.png",
+preview:"images/Riseandunite_02.jpg",
+gallery:[
+"images/Riseandunite_01.png",
+"images/Riseandunite_02.jpg",
+"images/Riseandunite_03.png",
+"images/Riseandunite_04.jpeg",
+"images/Riseandunite_05.jpeg",
+"images/Riseandunite_06.jpeg",
+"images/Riseandunite_07.jpeg",
+"images/Riseandunite_08.jpeg",
+"images/Riseandunite_09.jpeg",
+"images/Riseandunite_10.jpeg",
+"images/Riseandunite_11.jpeg",
+"images/Riseandunite_12.jpeg",
+"images/Riseandunite_13.jpeg",
+"images/Riseandunite_14.jpeg",
+"images/Riseandunite_15.jpeg",
+"images/Riseandunite_16.jpeg",
+"images/Riseandunite_17.jpeg",
+"images/Riseandunite_18.png",
+"images/Riseandunite_19.png"
+],
+desc:`Artwork voor de track "Rise and Unite (Insanity Anthem 2021)" van Savellix & TCM.`
+}
+]
+
+function showHome() {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  document.getElementById("page-home").classList.add("active")
+  history.pushState({ page: "home" }, "", location.pathname)
+  window.scrollTo(0, 0)
+}
+
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  document.getElementById("page-" + name).classList.add("active")
+  history.pushState({ page: name }, "", location.pathname)
+  window.scrollTo(0, 0)
+}
+
+function openProject(i) {
+  const p = projects[i]
+  document.getElementById("proj-h").innerText = p.title
+  document.getElementById("ps-title").innerText = p.title
+  document.getElementById("ps-cat").innerText = p.cat
+  document.getElementById("ps-serv").innerText = p.services
+  document.getElementById("ps-tools").innerText = p.tools
+  document.getElementById("proj-desc").innerText = p.desc
+  document.getElementById("proj-cover").src = p.cover
+
+  const grid = document.getElementById("gal-grid")
+  grid.innerHTML = ""
+  p.gallery.forEach((img, idx) => {
+    const item = document.createElement("div")
+    item.className = idx === 0 ? "gi wide" : "gi"
+    item.innerHTML = `<img loading="lazy" src="${img}">`
+    grid.appendChild(item)
+  })
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+  document.getElementById("page-project").classList.add("active")
+  history.pushState({ page: "project", index: i }, "", location.pathname)
+  window.scrollTo(0, 0)
+}
+
+// Knoppen koppelen
+const navLogo = document.getElementById('nav-logo')
+const navHome = document.getElementById('nav-home')
+const navWork = document.getElementById('nav-work')
+const navAbout = document.getElementById('nav-about')
+const navContact = document.getElementById('nav-contact')
+const backBtn = document.getElementById('back-btn')
+const aboutTeaser = document.getElementById('about-teaser')
+
+if(navLogo) navLogo.onclick = e => { e.preventDefault(); showHome() }
+if(navHome) navHome.onclick = () => showHome()
+if(navWork) navWork.onclick = () => { showHome(); setTimeout(() => document.getElementById('wa').scrollIntoView({behavior:'smooth'}), 80) }
+if(navAbout) navAbout.onclick = () => showPage('about')
+if(navContact) navContact.onclick = () => { showHome(); setTimeout(() => document.getElementById('ca').scrollIntoView({behavior:'smooth'}), 80) }
+if(backBtn) backBtn.onclick = () => showHome()
+if(aboutTeaser) aboutTeaser.onclick = () => showPage('about')
+
+// Projecten lijst
+const list = document.getElementById("project-list")
+projects.forEach((p, i) => {
+  const row = document.createElement("div")
+  row.className = "p-row"
+  row.innerHTML = `
+    <div class="p-num">${String(i+1).padStart(2,"0")}</div>
+    <div class="p-title">${p.title}</div>
+    <div class="p-cat">${p.cat}</div>
+  `
+  row.onclick = () => openProject(i)
+  list.appendChild(row)
+})
+
+// Hover preview
+const preview = document.getElementById('preview')
+const previewImg = document.getElementById('preview-img')
+
+document.querySelectorAll('.p-row').forEach((row, i) => {
+  row.addEventListener('mouseenter', () => {
+    previewImg.src = projects[i].preview
+    preview.classList.add('visible')
+  })
+  row.addEventListener('mouseleave', () => {
+    preview.classList.remove('visible')
+  })
+  row.addEventListener('mousemove', e => {
+    preview.style.left = e.clientX + 'px'
+    preview.style.top = e.clientY + 'px'
+  })
+})
+
+// Browser terug knop
+window.addEventListener("popstate", e => {
+  if (!e.state || e.state.page === "home") {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+    document.getElementById("page-home").classList.add("active")
+    window.scrollTo(0, 0)
+    return
+  }
+  if (e.state.page === "about") {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
+    document.getElementById("page-about").classList.add("active")
+    window.scrollTo(0, 0)
+  } else if (e.state.page === "project") {
+    openProject(e.state.index)
+  }
+})
+
+history.replaceState({ page: "home" }, "", location.pathname)
+
+// Cursor
+const cur = document.getElementById('cur')
+const curF = document.getElementById('cur-f')
+let mx = 0, my = 0, fx = 0, fy = 0
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX
+  my = e.clientY
+  cur.style.left = mx + 'px'
+  cur.style.top = my + 'px'
+})
+
+function animateCursor() {
+  fx += (mx - fx) * 0.18
+  fy += (my - fy) * 0.18
+  curF.style.left = fx + 'px'
+  curF.style.top = fy + 'px'
+  requestAnimationFrame(animateCursor)
+}
+animateCursor()
+
+document.querySelectorAll('a, button, .p-row, .about-teaser').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'))
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'))
+})
