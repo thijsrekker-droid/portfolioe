@@ -114,7 +114,17 @@
       <div class="pg"><div class="pg-lbl">Projectbeelden</div><div class="gg" id="gal-grid"></div></div>
     </div>
   </div>
-
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash
+      if (hash === '#about') {
+        showPage('about')
+      } else if (hash.startsWith('#project-')) {
+        const i = parseInt(hash.replace('#project-', ''))
+        if (!isNaN(i)) openProject(i)
+      }
+    })
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
