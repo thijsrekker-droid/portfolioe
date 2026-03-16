@@ -15,12 +15,12 @@
   <div class="preview-img" id="preview"><img id="preview-img" src="" alt=""></div>
 
   <nav>
-    <a href="#" class="n-logo" onclick="showHome();return false;">Thijs Rekker</a>
+    <a href="#" class="n-logo" id="nav-logo">Thijs Rekker</a>
     <div class="n-c">
-      <button class="n-a" onclick="showHome()">Home</button>
-      <button class="n-a" onclick="showHome();setTimeout(()=>document.getElementById('wa').scrollIntoView({behavior:'smooth'}),80)">Work</button>
-      <button class="n-a" onclick="showPage('about')">About</button>
-      <button class="n-a" onclick="showHome();setTimeout(()=>document.getElementById('ca').scrollIntoView({behavior:'smooth'}),80)">Contact</button>
+      <button class="n-a" id="nav-home">Home</button>
+      <button class="n-a" id="nav-work">Work</button>
+      <button class="n-a" id="nav-about">About</button>
+      <button class="n-a" id="nav-contact">Contact</button>
       <div class="n-avail"><div class="n-dot"></div>Beschikbaar</div>
     </div>
   </nav>
@@ -45,7 +45,7 @@
     <div class="section-mini-label">Recente projecten</div>
     <div id="project-list"></div>
 
-    <div class="about-teaser reveal" onclick="showPage('about')">
+    <div class="about-teaser reveal" id="about-teaser">
       <div>
         <div class="sec-tag teaser-tag">Over mij</div>
         <p class="about-teaser-text">Graphic designer uit Barneveld die gelooft dat goed design een verhaal vertelt dat mensen bijblijft.</p>
@@ -98,7 +98,7 @@
   <div class="page" id="page-project">
     <div class="pw">
       <div class="ph">
-        <div class="ph-top"><button class="back" onclick="showHome()">Alle projecten</button></div>
+        <div class="ph-top"><button class="back" id="back-btn">Alle projecten</button></div>
         <div class="ph-name-wrap"><div class="ph-name" id="proj-h"></div></div>
         <div class="ph-meta-strip">
           <div class="pm-cell"><div class="pm-k">Project</div><div class="pm-v" id="ps-title"></div></div>
@@ -114,17 +114,7 @@
       <div class="pg"><div class="pg-lbl">Projectbeelden</div><div class="gg" id="gal-grid"></div></div>
     </div>
   </div>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const hash = window.location.hash
-      if (hash === '#about') {
-        showPage('about')
-      } else if (hash.startsWith('#project-')) {
-        const i = parseInt(hash.replace('#project-', ''))
-        if (!isNaN(i)) openProject(i)
-      }
-    })
-  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
